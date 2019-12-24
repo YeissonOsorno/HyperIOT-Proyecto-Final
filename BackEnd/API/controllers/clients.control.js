@@ -4,6 +4,7 @@ const express = require('express');
 const clientModel = require('../models/client.models');
 const moment = require('moment');
 const bcrypt = require('bcrypt-nodejs');
+const jwt = require('../services/jwt');
 
 function home(req , res){
     return res.status(200).send({
@@ -49,7 +50,28 @@ function saveClient(request , response){
     
 }
 
+function loginClient(request, response){
+    const params = request.body;
+    const userName = params.email;
+    const password = params.passwordUser;
+    /*Query for check if data exists */
+    clientModel.findOne({email : userName},(error,client)=>{
+        if (error) return response.status(500).send({ message: 'Error in request, check connection to database' });
+        if(client){
+            bcrypt.compare(password, client.passwordUser, (error, check) => {
+                if (error) return response.status(500).send({ message: "Password couldn't be encrypted" });
+                if(check){                
+                    if(params.gettoken){
+                        return response.status(200).send({token:jwt.createToken(client)})
+                    }else{ return response.status(200).send(client)}
+                }else{ return response.status(404).send({message:'Client not was identified'})}
+            
+            });
+        }else{return response.status(404).send({message:'The client no exists'})}
+    })
+}
 module.exports = {
     home,
-    saveClient
+    saveClient,
+    loginClient
 };

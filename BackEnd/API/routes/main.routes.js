@@ -8,5 +8,6 @@ const API = express.Router(); // Load method of express, by name Router,for meth
 //Routes test
 API.get('/home', clientController.home);
 API.post('/saveClient', clientController.saveClient);
+API.post('/tokenClient', clientController.loginClient);
 
 module.exports = API;

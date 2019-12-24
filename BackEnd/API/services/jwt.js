@@ -10,7 +10,7 @@ exports.createToken = function(client){
         name : client.name,
         lastName : client.lastName,
         email : client.email,
-        passwordUser = client.passwordUser,        
+        passwordUser : client.passwordUser,        
         
         iat : moment().unix(),
         exp : moment().add(12,'hours').unix
