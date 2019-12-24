@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YeissonOsorno/HyperIOT-Proyecto-Final.git"
+  },
   "keywords": [
     "api",
     "nodejs",
@@ -14,8 +18,13 @@
     "javascript",
     "backend"
   ],
-  "author": "Yeisson Osorno",
+  "author": "Yeisson Osorno and Cristian Gonzalez",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YeissonOsorno/HyperIOT-Proyecto-Final/issues"
+  },
+  "homepage": "https://github.com/YeissonOsorno/HyperIOT-Proyecto-Final#readme",
+  
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",

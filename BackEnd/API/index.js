@@ -1,10 +1,10 @@
 'use strict';
-/*Desde este archivo hacemos la conexión a la base de datos con Mongo DB */
+/* From this file create connection that databse in MongoDB*/
 
 const mongoose = require('mongoose');
 const app = require('./app');
 const port = 3000;
-const connectionString = 'mongodb://localhost:27017/eureka'
+const connectionString = 'mongodb://localhost:27017/hyperiot_db'
 mongoose.Promise = global.Promise;
 
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
