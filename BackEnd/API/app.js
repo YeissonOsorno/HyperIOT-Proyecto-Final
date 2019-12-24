@@ -5,9 +5,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-
 /*Load routes that user */
-const testRutas = require('./routes/test.routes');
+const testRutas = require('./routes/main.routes');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,4 +14,3 @@ app.use(bodyParser.json());
 app.use('/api', testRutas);
 
 module.exports = app;
-

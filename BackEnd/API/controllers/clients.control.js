@@ -1,6 +1,7 @@
 'use strict';
 /*From file create the controllers or method for CRUD */
 const express = require('express');
+const userModel = require('../models/client.models');
 
 function home(req , res){
     return res.status(200).send({
@@ -8,4 +9,4 @@ function home(req , res){
     })
 }
 
-module.exports  = {home}
+module.exports = { home };
