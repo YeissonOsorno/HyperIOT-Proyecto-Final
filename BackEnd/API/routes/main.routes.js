@@ -10,5 +10,6 @@ API.get('/home', clientController.home);
 API.post('/saveClient', clientController.saveClient);
 API.post('/tokenClient', clientController.loginClient);
 API.post('/getClient/:id', md_auth.ensureAuthentication, clientController.getClient);
+API.put('/updateClient/:id', md_auth.ensureAuthentication, clientController.updateClient);
 
 module.exports = API;

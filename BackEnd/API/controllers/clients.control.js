@@ -81,9 +81,20 @@ function getClient(request,response){
     });
 }
 
+function updateClient(request, response){
+    var clientId = request.params.id;
+    var update = request.body;
+    clientModel.findByIdAndUpdate(clientId, update, { new: true }, (error, clientUpdated) => {
+        if (error) return response.sta(500).send({ message: 'Error request, error in the server' });
+        if (!clientUpdated) return response.status(404).send({ message: 'Error, not was updated client' });
+        return response.status(202).send({ Client: clientUpdated });
+    });
+}
+
 module.exports = {
     home,
     saveClient,
     loginClient,
-    getClient
+    getClient,
+    updateClient
 };
