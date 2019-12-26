@@ -70,8 +70,20 @@ function loginClient(request, response){
         }else{return response.status(404).send({message:'The client no exists'})}
     })
 }
+function getClient(request,response){
+    /*We collect the id by URL, when it is by URL we use .params, when it is by post or get we use .body*/
+    const clientId = request.params.id;
+    clientModel.findById(clientId, (error, client) => {
+        /*validate if exists any error with connection that database */
+        if(error) return response.status(500).send({message:'was ocurred an error connection or search'})
+        if(!client) return response.status(404).send({message:'Not found matches with parameters'})
+        return response.status(200).send({client});
+    });
+}
+
 module.exports = {
     home,
     saveClient,
-    loginClient
+    loginClient,
+    getClient
 };

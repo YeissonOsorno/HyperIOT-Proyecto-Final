@@ -2,7 +2,7 @@
 
 const jwt = require('jwt-simple');
 const moment = require('moment');
-const secret = 'key_secret_test_client';
+const secret = 'secret_key_client';
 
 exports.ensureAuthentication =  function(request, response,next){
     /*Check parameter of verification */
@@ -14,7 +14,7 @@ exports.ensureAuthentication =  function(request, response,next){
     /*Try decode payload send to service jwt */
     try
     {
-        jwt.decode(token, secret);
+        var payload = jwt.decode(token, secret);
         /*we verify date expiration */
         if(payload.exp <=moment().unix()){
             return response.status(401).send({ message: 'Token has expirated, Restart sesion' });
