@@ -15,5 +15,5 @@ API.put('/updateClient/:id', md_auth.ensureAuthentication, clientController.upda
 //Routes Sensors
 API.get('/homeSensor', sensorController.home);
 API.post('/saveSensor', sensorController.saveSensor);
-
+API.get('/getSensor/:id', sensorController.getSensor);
 module.exports = API;

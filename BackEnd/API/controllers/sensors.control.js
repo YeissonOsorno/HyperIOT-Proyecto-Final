@@ -42,7 +42,18 @@ function saveSensor(request, response){
 
 }
 
+function getSensor(request, response){
+    const sensorId = request.params.id;
+    sensorModel.findById(sensorId,(error,sensor)=>{
+        if (error) return response.status(500).send({ message: 'Was ocurred error in connection with database' });
+        if (!sensor) return response.status(404).send({ message: 'Not found matches with parameters' });
+        return response.status(200).send({sensor});
+    })
+}
+
 module.exports = {
     home,
-    saveSensor
+    saveSensor,
+    getSensor
 }
+    
