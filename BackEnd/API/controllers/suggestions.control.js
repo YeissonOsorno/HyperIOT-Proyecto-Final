@@ -52,8 +52,19 @@ function getSuggestion(request, response){
     });
 }
 
+function updateSuggestion(request,response){
+    const suggestionId = request.params.id;
+    const update = request.body;
+    suggestionModel.findByIdAndUpdate(suggestionId,update,{new:true},(error,suggestionUpdated)=>{
+        if (error) return response.status(500).send({ message: 'Was ocurred error in server' });
+        if(!suggestionUpdated) return response.status(404).send({message:'Suggestion Wasn´t updated '})
+        return response.status(202).send({ suggestionUpdated });
+    })
+}
+
 module.exports =  {
     home,
     saveSuggestion,
-    getSuggestion
+    getSuggestion,
+    updateSuggestion
 }
