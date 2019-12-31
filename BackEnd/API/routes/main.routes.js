@@ -3,6 +3,7 @@
 const express = require('express');
 const clientController = require('../controllers/clients.control');
 const sensorController = require('../controllers/sensors.control');
+const suggestionController = require('../controllers/suggestions.control');
 const API = express.Router(); // Load method of express, by name Router,for methods GET and POST
 const md_auth = require('../middleware/authentication');
 
@@ -17,4 +18,8 @@ API.get('/homeSensor', sensorController.home);
 API.post('/saveSensor', sensorController.saveSensor);
 API.get('/getSensor/:id', sensorController.getSensor);
 API.put('/updateSensor/:id', sensorController.updateSensor);
+//Routes Suggestions
+API.get('/homeSuggestion', suggestionController.home);
+API.post('/saveSuggestion', suggestionController.saveSuggestion);
+
 module.exports = API;
