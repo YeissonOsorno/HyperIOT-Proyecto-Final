@@ -51,9 +51,20 @@ function getSensor(request, response){
     })
 }
 
+function updateSensor(request,response){
+    const sensorId = request.params.id;
+    const update = request.body;
+    sensorModel.findByIdAndUpdate(sensorId, update, { new: true }, (error, sensorUpdated) => {
+        if (error) return response.status(500).send({ message: 'Was ocurred error in server' });
+        if (!sensorUpdated) return response.status(404).send({ message: 'The sensor wasn´t updtaded' });
+        return response.status(200).send({ sensorUpdated });
+    });
+}
+
 module.exports = {
     home,
     saveSensor,
-    getSensor
+    getSensor,
+    updateSensor
 }
     
