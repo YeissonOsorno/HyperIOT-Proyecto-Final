@@ -21,5 +21,6 @@ API.put('/updateSensor/:id', sensorController.updateSensor);
 //Routes Suggestions
 API.get('/homeSuggestion', suggestionController.home);
 API.post('/saveSuggestion', suggestionController.saveSuggestion);
+API.get('/getSuggestion/:id', suggestionController.getSuggestion);
 
 module.exports = API;

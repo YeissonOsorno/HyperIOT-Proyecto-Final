@@ -43,7 +43,17 @@ function saveSuggestion(request, response){
 
 }
 
+function getSuggestion(request, response){
+    const suggestionId = request.params.id;
+    suggestionModel.findById(suggestionId, (error, suggestion) => {
+        if (error) return response.status(500).send({ message: 'Was ocurred error with database' });
+        if (!suggestion) return response.status(404).send({ message: 'Not found matches with parameters' });
+        return response.status(202).send({ suggestion });
+    });
+}
+
 module.exports =  {
     home,
-    saveSuggestion
+    saveSuggestion,
+    getSuggestion
 }
